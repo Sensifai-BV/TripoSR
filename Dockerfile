@@ -11,10 +11,11 @@ RUN apt update && apt upgrade -y && apt clean
 
 # Create and install in TripoSR env
 RUN python3 -m venv .tripo-env && \
-    .tripo-env/bin/pip install --upgrade pip setuptools && \
+    .tripo-env/bin/pip install --upgrade pip && \
+    .tripo-env/bin/pip install torch torchvision torchaudio && \
+    .tripo-env/bin/pip install --upgrade setuptools && \
     .tripo-env/bin/pip install -r requirements.txt
 
 # Create and install in TripoSR texture env
 RUN python3 -m venv .tripo-texture-env && \
-    .tripo-texture-env/bin/pip install --upgrade pip setuptools && \
     .tripo-texture-env/bin/pip install -r texture-reqs.txt
